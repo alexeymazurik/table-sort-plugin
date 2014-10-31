@@ -42,17 +42,16 @@
 
 
 
-        $(this).find('thead').find('tr').each(function(){
-            $(this).find('td').each(function(){
-                thead.push($(this).text());
-                $(this).css({
-                    "cursor": "pointer"
-                })
-            });
-
+        $self.find('thead tr td').each(function(){
+            thead.push($(this).text());
+            $(this).css({
+                "cursor": "pointer"
+            })
         });
 
-        $(this).find('tbody').find('tr').each(function(){
+
+
+        $self.find('tbody tr').each(function(){
             var tmp = {};
             $(this).find('td').each(function(i){
                 tmp[thead[i]] = $(this).text();
@@ -61,8 +60,7 @@
 
         });
 
-        $(this).find('thead').find('tr').each(function(){
-            $(this).find('td').each(function(){
+        $self.find('thead tr td').each(function(){
                 $(this).on('click', function(){
                     console.log($.inArray("First name", thead));
                     var tmp = $(this).text();
@@ -77,15 +75,13 @@
                     console.log(multiplySort);
                     sort();
                 });
-            });
-
         });
 
         function sort() {
             var smth = tbody.sort(dynamicSortMultiple(multiplySort)),
                 tbodyCells = [];
 
-            $self.find('tbody').find('tr').each(function(){
+            $self.find('tbody tr').each(function(){
                 var tmp = [];
                 $(this).find('td').each(function(){
                     tmp.push($(this));
